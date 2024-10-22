@@ -5,7 +5,7 @@ lua54 'yes'
 name 'judd_invoice'
 author 'Judd'
 version '1.0.0'
-description 'Simple invoice system using ox_core and ox_lib'
+description 'Simple invoice resource to use with ox_banking.'
 
 shared_script '@ox_lib/init.lua'
 
