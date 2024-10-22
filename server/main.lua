@@ -1,8 +1,7 @@
-local Ox = require '@ox_core/lib/init'
-
-lib.callback.register('ox_invoice:create', function(source, data)
+RegisterNetEvent('ox_invoice:create', function(data)
+    local source = source
     local player = Ox.GetPlayer(source)
-    if not player then 
+    if not player then
         return TriggerClientEvent('ox_lib:notify', source, {
             title = 'Invoice System',
             description = 'Player not found',
@@ -11,7 +10,7 @@ lib.callback.register('ox_invoice:create', function(source, data)
     end
 
     local account = player.getAccount()
-    if not account then 
+    if not account then
         return TriggerClientEvent('ox_lib:notify', source, {
             title = 'Invoice System',
             description = 'No account found',
@@ -42,7 +41,7 @@ lib.callback.register('ox_invoice:create', function(source, data)
         toAccount = targetAccount.accountId,
         amount = data.amount,
         message = data.message,
-        dueDate = os.date('%Y-%m-%d', os.time() + 7*24*60*60) -- 7 days
+        dueDate = os.date('%Y-%m-%d', os.time() + 7 * 24 * 60 * 60) -- 7 days
     })
 
     if result.success then
@@ -58,6 +57,4 @@ lib.callback.register('ox_invoice:create', function(source, data)
             type = 'error'
         })
     end
-
-    return result.success
 end)

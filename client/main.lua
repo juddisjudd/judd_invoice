@@ -23,7 +23,7 @@ RegisterCommand('invoice', function()
 
     if not input then return end
 
-    lib.callback.await('ox_invoice:create', false, {
+    TriggerServerEvent('ox_invoice:create', {
         stateId = input[1],
         amount = input[2],
         message = input[3]
